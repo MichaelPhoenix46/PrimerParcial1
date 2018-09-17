@@ -13,4 +13,5 @@ namespace PrimerParcial2018.DAL
         //public Contexto() : base("ConStr")
         //{ }
     }
+
 }
