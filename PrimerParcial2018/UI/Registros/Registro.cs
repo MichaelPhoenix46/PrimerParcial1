@@ -37,6 +37,11 @@ namespace PrimerParcial2018.UI.Registros
                 VendedoreserrorProvider.SetError(PorRetencionnumericUpDown, "Llenar Porciento, si esta en 0");
                 errores = true;
             }
+            if (RetencionnumericUpDown.Value == 0)
+            {
+
+                VendedoreserrorProvider.SetError(RetencionnumericUpDown, "Si los campos de sueldo y porciento estan llenos, debe dar click en la flecha de retencion para llenarla");
+            }
 
 
 
@@ -104,8 +109,23 @@ namespace PrimerParcial2018.UI.Registros
 
         private void RetencionnumericUpDown_ValueChanged(object sender, EventArgs e)
         {
-             RetencionnumericUpDown.Value = VendedoresBLL.CalculoRetencion(SueldonumericUpDown.Value, PorRetencionnumericUpDown.Value);
+            if (Validar())
+            {
+                MessageBox.Show("llenar el campo vacio", "trate de guardar de nuevo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }else
+            if (SueldonumericUpDown.Value != 0 && PorRetencionnumericUpDown.Value != 0)
+            {
+                RetencionnumericUpDown.Value = VendedoresBLL.CalculoRetencion(SueldonumericUpDown.Value, PorRetencionnumericUpDown.Value);
+                
 
+            }
+            else
+            {
+                MessageBox.Show("algun campo no esta lleno correctamente", "trate de nuevo",
+                      MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
         }
 
         private void Eliminarbutton_Click(object sender, EventArgs e)
@@ -157,6 +177,11 @@ namespace PrimerParcial2018.UI.Registros
                 MessageBox.Show("no se encontro", "buscar de nuevo",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void SueldonumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
