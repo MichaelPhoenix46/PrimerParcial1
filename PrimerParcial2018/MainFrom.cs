@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrimerParcial2018.UI.Registros;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace PrimerParcial2018
         public MainFrom()
         {
             InitializeComponent();
+        }
+
+        private void registro1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Registro registro = new Registro();
+            registro.Show();
         }
     }
 }
